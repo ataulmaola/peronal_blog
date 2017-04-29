@@ -1,0 +1,103 @@
+ {% extends 'base.html' %}   
+ {% load staticfiles %}
+ {% block head_title %}  {{ title }} | {{ block.super }}{% endblock %}
+ 
+
+
+
+
+
+{% block content %}
+  <div class="content">
+   <div class="container">
+     <div class="content-grids">
+       <div class="col-md-8 content-main">
+         <div class="content-grid">
+
+         {% for obj in  query_set %}          
+           <div class="content-grid-info">
+             {% if obj.image %}
+                          <img src="{{ obj.image.url }}" alt="{{ obj.title }}" class="img-responsive"/>
+             {% endif %}
+             <div class="post-info">
+             <h4><a href="{{ obj.get_absolute_url }}">{{ obj.title }}</a> <small>{{ obj.publish|timesince }} ago</small></h4>
+                        {% if obj.user.get_full_name %}
+                          <p>Author : {{ obj.user.get_full_name }}</p>
+
+                        {% endif %}
+             <p>{{ obj.content|linebreaks|truncatechars:100 }}</p>
+             <a href="{{ obj.get_absolute_url }}"><span></span>READ MORE</a>
+             </div>
+           </div>
+
+          {% endfor %}
+
+           
+         </div>
+         <div class="row">
+
+          <div class="col-sm-3 col-sm-offset-4">
+           <div class="pagination content-center">
+                <span class="step-links">
+                    {% if query_set.has_previous %}
+                        <a href="?{{ page_request_var }}={{ query_set.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">previous</a>
+                    {% endif %}
+
+                    <span class="current">
+                        Page {{ query_set.number }} of {{ query_set.paginator.num_pages }}.
+                    </span>
+
+                    {% if query_set.has_next %}
+                        <a href="?{{ page_request_var }}={{ query_set.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">next</a>
+                    {% endif %}
+                </span>
+            </div>
+            </div>
+            </div>
+
+        </div>
+        <div class="col-md-4 content-right">
+         <div class="recent">
+           <h3>RECENT POSTS</h3>
+           <ul>
+           <li><a href="#">Aliquam tincidunt mauris</a></li>
+           <li><a href="#">Vestibulum auctor dapibus  lipsum</a></li>
+           <li><a href="#">Nunc dignissim risus consecu</a></li>
+           <li><a href="#">Cras ornare tristiqu</a></li>
+           </ul>
+         </div>
+         <div class="comments">
+           <h3>RECENT COMMENTS</h3>
+           <ul>
+           <li><a href="#">Amada Doe </a> on <a href="#">Hello World!</a></li>
+           <li><a href="#">Peter Doe </a> on <a href="#"> Photography</a></li>
+           <li><a href="#">Steve Roberts  </a> on <a href="#">HTML5/CSS3</a></li>
+           </ul>
+         </div>
+         <div class="clearfix"></div>
+         <div class="archives">
+           <h3>ARCHIVES</h3>
+           <ul>
+           <li><a href="#">October 2013</a></li>
+           <li><a href="#">September 2013</a></li>
+           <li><a href="#">August 2013</a></li>
+           <li><a href="#">July 2013</a></li>
+           </ul>
+         </div>
+         <div class="categories">
+           <h3>CATEGORIES</h3>
+           <ul>
+           <li><a href="#">Vivamus vestibulum nulla</a></li>
+           <li><a href="#">Integer vitae libero ac risus e</a></li>
+           <li><a href="#">Vestibulum commo</a></li>
+           <li><a href="#">Cras iaculis ultricies</a></li>
+           </ul>
+         </div>
+         <div class="clearfix"></div>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+</div>
+
+  {% endblock %}

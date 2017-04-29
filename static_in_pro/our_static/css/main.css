@@ -1,0 +1,33 @@
+a{
+	color:  #33cccc;
+}
+.set-nav{
+	background: #097054;
+	height: 100px;
+}
+
+.container-fluid{
+	margin-top: 15px;
+}
+.navbar-default .navbar-brand{
+	font-size: 2.5em;
+	color: #ffde00;
+	
+}
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus{
+	color:	#ff9900;
+}
+.navbar-default .navbar-nav > li > a{
+	font-size: 1.5em;
+	 color: #ffde00;
+}
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus{
+	color:	#ff9900;
+}
+.people{
+	margin-top: 0px;
+	padding-top:65px;
+}
+
