@@ -5,7 +5,7 @@ from django.contrib import admin
 from blog_app.views import (blog_create,blog_list,blog_detail,blog_update,blog_delete,about,contact)
 urlpatterns = [
 
-    url(r'^$',blog_list,name="list"),
+    
     url(r'^create/$',blog_create,name="create"),
     url(r'^about/$',about,name="about"),
     url(r'^contact/$',contact,name="contact"),
