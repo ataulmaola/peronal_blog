@@ -17,12 +17,10 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.conf.urls import url,include
 from django.contrib import admin
-from blog_app.views import blog_list
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^blog_app/',include("blog_app.urls",namespace="blog_app")),
-    url(r'^$',blog_list,name="list"),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
